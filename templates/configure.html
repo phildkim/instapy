@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block content %}
+  {%block title %}
+    <br />
+    <h2 style="text-align: center;">
+      <img src="{{ url_for('static', filename='img/instagram.svg') }}" height="50" width="50">
+      <b><em>InstaPy Configuration</em></b>
+    </h2><br />
+    <hr />
+    <h5 style="text-align: center;">{{ timestamp }}</h5>
+    <hr />
+  {% endblock %}
+    <div class="container-fluid">
+      <!-- influencers -->
+      <div class="card">
+        <div class="card-header text-white bg-danger">
+          {% for list in lists %}
+          {% if list[2] == 'influencers' %}
+          <span style="color: honeydew;">(Id)</span>
+          <b><em>{{ list[2] | upper }}</em></b>&emsp;
+          <img src="{{ url_for('static', filename='img/at-sign.svg') }}">
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card-body text-white bg-dark">
+          {% for item in items %}
+          {% if item[2] == 1 %}
+          <span style="color: honeydew;">{{ "(%s)" % item[0] }}</span>
+          <b>{{ "%s, " % item[3] }}</b>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div><br />
+      <!-- hashtags -->
+      <div class="card">
+        <div class="card-header text-white bg-danger">
+          {% for list in lists %}
+          {% if list[2] == 'hashtags' %}
+          <span style="color: honeydew;">(Id)</span>
+          <b><em>{{ list[2] | upper }}</em></b>&emsp;
+          <img src="{{ url_for('static', filename='img/hash.svg') }}">
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card-body text-white bg-dark">
+          {% for item in items %}
+          {% if item[2] == 2 %}
+          <span style="color:honeydew;">{{ "(%s)" % item[0] }}</span>
+          <b>{{ "%s, " % item[3] }}</b>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div><br />
+      <!-- location -->
+      <div class="card">
+        <div class="card-header text-white bg-danger">
+          {% for list in lists %}
+          {% if list[2] == 'locations' %}
+          <span style="color: honeydew;">(Id)</span>
+          <b><em>{{ list[2] | upper }}</em></b>&emsp;
+          <img src="{{ url_for('static', filename='img/map-pin.svg') }}">
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card-body text-white bg-dark">
+          {% for item in items %}
+          {% if item[2] == 3 %}
+          <span style="color: honeydew;">{{ "(%s)" % item[0] }}</span>
+          <b>{{ "%s, " % item[3] }}</b>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+      <br /><hr /><br />
+      <div class="col-md-8 offset-md-2">
+        <form method="POST">
+          <!-- configure options -->
+          <div class="form-group">
+            <label for="option"><b><em>Select Configure Options</em></b></label>
+            <select class="form-control" name="option">
+              {% for list in options %}
+                {% if list == request.form['option'] %}
+                  <option value="{{ request.form['option'] }}" selected>
+                    {{ request.form['option'] }}
+                  </option>
+                {% else %}
+                  <option value="{{ list }}">
+                    {{ list }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+          <!-- list options -->
+          <div class="form-group">
+            <label for="list"><b><em>Select InstaPy List</em></b></label>
+            <select class="form-control" name="list">
+              {% for list in lists %}
+                {% if list['title'] == request.form['list'] %}
+                  <option value="{{ request.form['list'] }}" selected>
+                    {{ request.form['list'] }}
+                  </option>
+                {% else %}
+                  <option value="{{ list['title'] }}">
+                    {{ list['title'] }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+          <!-- input id -->
+          <div class="form-group">
+            <label for="id"><b><em>Enter Id</em></b></label>
+            <input type="number" name="id" class="form-control" placeholder="Id required for update and delete" value="{{ request.form['id'] }}"></input>
+          </div>
+          <!-- input field -->
+          <div class="form-group">
+            <label for="content"><b><em>Enter Field</em></b></label>
+            <input type="text" name="content" class="form-control" value="{{ request.form['content'] }}"></input>
+          </div><br />
+          <!-- submit button -->
+          <div class="form-group">
+            <button type="submit" class="btn btn-success btn-block" data-toggle="tooltip"
+          data-placement="top" title="Click to save changes"><b>SUBMIT</b></button>
+          </div>
+        </form>
+        <form action="{{ url_for('upload') }}" method="POST">
+          <div class="form-group">
+            <button type="submit" class="btn btn-secondary btn-block" data-toggle="tooltip"
+              data-placement="top" title="Click to load data to InstaPy API"><b>LOAD</b></button>
+          </div>
+        </form>
+        <div class="col-md-8 offset-md-2">
+          <ul>
+            <li>1. Add, Update, or Delete items</li>
+            <li>2. Load all the data</li>
+            <li>3. Go Automate Page, click START</li>
+          </ul>
+        </div>
+      </div>
+  
+{% endblock %}

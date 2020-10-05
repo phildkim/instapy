@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block content %}
+  {%block title %}
+    <br />
+    <h2 style="text-align: center;">
+      <img src="{{ url_for('static', filename='img/instagram.svg') }}" height="50" width="50">
+      <b><em>InstaPy Automation</em></b>
+    </h2><br />
+    <hr />
+    <h5 style="text-align: center;">{{ timestamp }}</h5>
+    <hr />
+  {% endblock %}
+  <div class="container">
+    <!-- Table -->
+    <div class="">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">Text Files</th>
+            <th scope="col">Items</th>
+            <th scope="col">Updated</th>
+            <th scope="col">Schedule</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-secondary">
+            <th scope="row">influencers.txt</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td></td>
+          </tr>
+          <tr class="table-secondary">
+            <th scope="row">hashtags.txt</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td></td>
+          </tr>
+          <tr class="table-secondary">
+            <th scope="row">locations.txt</th>
+            <td>Larry the Bird</td>
+            <td>@twitter</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br /><hr /><br />
+    <div class="container-fluid">
+      <!-- influencers -->
+      <div class="card">
+        <div class="card-header text-white bg-success">
+          {% for list in lists %}
+          {% if list[2] == 'influencers' %}
+          <span style="color: honeydew;">(Id)</span>
+          <b><em>{{ list[2] | upper }}</em></b>&emsp;
+          <img src="{{ url_for('static', filename='img/at-sign.svg') }}">
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card-body text-white bg-dark">
+          {% for item in items %}
+          {% if item[2] == 1 %}
+          <span style="color: honeydew;">{{ "(%s)" % item[0] }}</span>
+          <b>{{ "%s, " % item[3] }}</b>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div><br />
+      <!-- hashtags -->
+      <div class="card">
+        <div class="card-header text-white bg-success">
+          {% for list in lists %}
+          {% if list[2] == 'hashtags' %}
+          <span style="color: honeydew;">(Id)</span>
+          <b><em>{{ list[2] | upper }}</em></b>&emsp;
+          <img src="{{ url_for('static', filename='img/hash.svg') }}">
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card-body text-white bg-dark">
+          {% for item in items %}
+          {% if item[2] == 2 %}
+          <span style="color:honeydew;">{{ "(%s)" % item[0] }}</span>
+          <b>{{ "%s, " % item[3] }}</b>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div><br />
+      <!-- location -->
+      <div class="card">
+        <div class="card-header text-white bg-success">
+          {% for list in lists %}
+          {% if list[2] == 'locations' %}
+          <span style="color: honeydew;">(Id)</span>
+          <b><em>{{ list[2] | upper }}</em></b>&emsp;
+          <img src="{{ url_for('static', filename='img/map-pin.svg') }}">
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="card-body text-white bg-dark">
+          {% for item in items %}
+          {% if item[2] == 3 %}
+          <span style="color: honeydew;">{{ "(%s)" % item[0] }}</span>
+          <b>{{ "%s, " % item[3] }}</b>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div><br /><hr />
+    <div class="col-md-8 offset-md-2">
+    <!-- Start Button -->
+    <div class="col-md-4 offset-md-4">
+      <form action="{{ url_for('automate') }}" method="POST">
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-block" id="process"
+          data-toggle="tooltip" data-placement="top" title="Click to start InstaPy automation"><b>START</b></button>
+        </div>
+      </form>
+    </div>
+    <!-- Cancel Button -->
+    <div class="col-md-4 offset-md-4">
+      <form action="{{ url_for('automation') }}" method="POST">
+        <div class="form-group">
+          <button type="submit" class="btn btn-danger btn-block" id="process"
+          data-toggle="tooltip" data-placement="top" title="Click to start InstaPy automation"><b>CANCEL</b></button>
+        </div>
+      </form>
+    </div>
+    </div>
+    <hr /><br />
+    
+  </div>
+{% endblock %}

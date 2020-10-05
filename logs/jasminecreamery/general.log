@@ -1,0 +1,50 @@
+INFO [2020-10-04 18:53:09] [jasminecreamery]  Session started!
+INFO [2020-10-04 18:53:09] [jasminecreamery]  -- Connection Checklist [1/2] (Internet Connection Status)
+INFO [2020-10-04 18:53:10] [jasminecreamery]  - Internet Connection Status: ok
+INFO [2020-10-04 18:53:10] [jasminecreamery]  - Current IP is "47.232.255.55" and it's from "United States/US"
+INFO [2020-10-04 18:53:10] [jasminecreamery]  -- Connection Checklist [2/2] (Hide Selenium Extension)
+INFO [2020-10-04 18:53:10] [jasminecreamery]  - window.navigator.webdriver response: None
+INFO [2020-10-04 18:53:10] [jasminecreamery]  - Hide Selenium Extension: ok
+ERROR [2020-10-04 18:53:59] [jasminecreamery]  Error occurred while deleting cookies from web browser!
+	b'Message: Browsing context has been discarded\n'
+Traceback (most recent call last):
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/instapy/util.py", line 1879, in smart_run
+    session.login()
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/instapy/instapy.py", line 431, in login
+    self.want_check_browser,
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/instapy/login_util.py", line 311, in login_user
+    explicit_wait(browser, "TC", login_page_title, logger)
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/instapy/util.py", line 1743, in explicit_wait
+    result = wait.until(condition)
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/selenium/webdriver/support/wait.py", line 71, in until
+    value = method(self._driver)
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/selenium/webdriver/support/expected_conditions.py", line 51, in __call__
+    return self.title in driver.title
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 342, in title
+    resp = self.execute(Command.GET_TITLE)
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: Browsing context has been discarded
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/instapy/browser.py", line 191, in close_browser
+    browser.delete_all_cookies()
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 878, in delete_all_cookies
+    self.execute(Command.DELETE_ALL_COOKIES)
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/philipkim/Project/InstapyApp/env/lib/python3.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: Browsing context has been discarded
+
+INFO [2020-10-04 18:54:00] [jasminecreamery]  Sessional Live Report:
+	|> No any statistics to show
+
+
+[Session lasted 59.56 seconds]
+INFO [2020-10-04 18:54:00] [jasminecreamery]  Session ended!

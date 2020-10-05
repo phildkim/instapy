@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.min.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+
+  <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ url_for('index') }}" data-toggle="tooltip" data-placement="top"
+      title="Click to start Jasmine Creamery homepage">
+      <img src="{{ url_for('static', filename='img/logo1.jpg') }}" width="30" height="30"
+        class="rounded-circle d-inline-block align-top" alt="" loading="lazy">&ensp;
+        <span style="color:lightgoldenrodyellow;"><em><b>Jasmine Creamery</b></em></span>
+    </a>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active btn btn-info" href="{{ url_for('index') }}" data-toggle="tooltip"
+          data-placement="top" title="Click to start Jasmine Creamery homepage">Homepage</a>
+      </li>
+      &emsp;
+      <li class="nav-item">
+        <a class="nav-link active btn btn-danger" href="{{ url_for('configure') }}" data-toggle="tooltip"
+          data-placement="top" title="Click to configure InstaPy Automation">Configure</a>
+      </li>
+      &emsp;
+      <li class="nav-item">
+        <a class="nav-link active btn btn-success" href="{{ url_for('automation') }}" data-toggle="tooltip"
+          data-placement="top" title="Click to start InstaPy Automation page">Automate</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container-fluid">
+    <br />
+    {% for message in get_flashed_messages() %}
+      <div class="container alert alert-success" role="alert" style="text-align: center;">
+        <b>{{ message }}</b>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+    <!-- templates -->
+    {% block content %} 
+    {% endblock %}
+    <br />
+  </div>
+  
+  <!-- Footer Content -->
+  <div class="container"><hr />
+    <footer style="text-align: center;">
+      <a href="https://github.com/phildkim">&COPY;</a> 2020, Philip D. Kim
+    </footer><hr />
+  </div>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.slim.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+      $('.alert').alert()
+    })
+  </script>
+</body>
+
+</html>
