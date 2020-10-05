@@ -133,13 +133,3 @@ def sqlite_execute_update(sql_list_id, sql_content):
     finally:
         if con:
             con.close()
-"""
-write to text file for instapy
-  - influences.txt  (1) text_file
-  - hashtags.txt    (2) text_file
-  - locations.txt   (3) text_file
-  - text_data = '\n'.join(con.iterdump())
-"""
-def write_text(text_file, text_data):
-    with open(text_file, 'w+') as writer:
-        writer.write(text_data)

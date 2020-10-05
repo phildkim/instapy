@@ -22,10 +22,15 @@ def job_influencer():
     with smart_run(session, threaded=True):
         # configurations to maximize instagram traffic
         session.set_quota_supervisor(
-                enabled=True, sleep_after=["likes_h", "server_calls_h"], 
-                sleepyhead=True, stochastic_flow=True, notify_me=True, 
-                peak_likes_hourly=66, peak_likes_daily=585,
-                peak_server_calls_hourly=None, peak_server_calls_daily=4700
+          enabled=True, 
+          sleep_after=["likes_h", "server_calls_h"], 
+          sleepyhead=True, 
+          stochastic_flow=True, 
+          notify_me=True, 
+          peak_likes_hourly=66, 
+          peak_likes_daily=585,
+          peak_server_calls_hourly=None, 
+          peak_server_calls_daily=4700
         )
         session.set_blacklist(enabled=True, campaign='influencer_campaign')
         session.set_simulation(enabled=True, percentage=66.6)
@@ -33,7 +38,6 @@ def job_influencer():
         # list of influencers to interact with by liking 
         session_list = session.target_list('static/txt/influencers.txt')
         session.interact_by_users(session_list, amount=3, randomize=True)
-
 """
   Hash-Tags:
     - hashtags.txt (list of hashtags)
@@ -44,15 +48,20 @@ def job_hastag():
     session = InstaPy(
       username=instapy_username, 
       password=instapy_password, 
-      headless_browser=False)
+      headless_browser=True)
     # while smart_run performs tasks and ends session
     with smart_run(session, threaded=True):
         # configurations to maximize instagram traffic
         session.set_quota_supervisor(
-                enabled=True, sleep_after=["likes_h", "server_calls_h"], 
-                sleepyhead=True, stochastic_flow=True, notify_me=True, 
-                peak_likes_hourly=66, peak_likes_daily=585,
-                peak_server_calls_hourly=None, peak_server_calls_daily=4700
+          enabled=True, 
+          sleep_after=["likes_h", "server_calls_h"], 
+          sleepyhead=True, 
+          stochastic_flow=True, 
+          notify_me=True, 
+          peak_likes_hourly=66, 
+          peak_likes_daily=585,
+          peak_server_calls_hourly=None, 
+          peak_server_calls_daily=4700
         )
         session.set_blacklist(enabled=True, campaign='hashtag_campaign')
         session.set_simulation(enabled=True, percentage=66.6)
@@ -75,10 +84,15 @@ def job_location():
     with smart_run(session, threaded=True):
         # configurations to maximize instagram traffic
         session.set_quota_supervisor(
-                enabled=True, sleep_after=["likes_h", "server_calls_h"], 
-                sleepyhead=True, stochastic_flow=True, notify_me=True, 
-                peak_likes_hourly=66, peak_likes_daily=585,
-                peak_server_calls_hourly=None, peak_server_calls_daily=4700
+          enabled=True, 
+          sleep_after=["likes_h", "server_calls_h"], 
+          sleepyhead=True, 
+          stochastic_flow=True, 
+          notify_me=True, 
+          peak_likes_hourly=66, 
+          peak_likes_daily=585,
+          peak_server_calls_hourly=None, 
+          peak_server_calls_daily=4700
         )
         session.set_blacklist(enabled=True, campaign='hashtag_campaign')
         session.set_simulation(enabled=True, percentage=66.6)

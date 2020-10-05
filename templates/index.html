@@ -10,66 +10,58 @@
     <hr />
   {% endblock %}
   <div class="container">
-    <div class="container-fluid">
-      <!-- influencers -->
-      <div class="card">
-        <div class="card-header text-white bg-info">
-          {% for list in lists %}
+    <!-- influencers -->
+    <div class="card">
+      <div class="card-header text-white bg-info">
+        {% for list in lists %}
           {% if list[2] == 'influencers' %}
-          <span style="color: honeydew;">(Id)</span>
-          <b><em>{{ list[2] | upper }}</em></b>&emsp;
-          <img src="{{ url_for('static', filename='img/at-sign.svg') }}">
+            <img src="{{ url_for('static', filename='img/at-sign.svg') }}">&ensp;
+            <b><em>{{ list[2] | upper }}</em></b>
           {% endif %}
-          {% endfor %}
-        </div>
-        <div class="card-body text-white bg-dark">
-          {% for item in items %}
+        {% endfor %}
+      </div>
+      <div class="card-body text-white bg-dark">
+        {% for item in items %}
           {% if item[2] == 1 %}
-          <span style="color: honeydew;">{{ "(%s)" % item[0] }}</span>
-          <b>{{ "%s, " % item[3] }}</b>
+            <b>{{ "[%d, %s], " % (item[0], item[3]) }}</b>
           {% endif %}
-          {% endfor %}
-        </div>
-      </div><br />
-      <!-- hashtags -->
-      <div class="card">
-        <div class="card-header text-white bg-info">
-          {% for list in lists %}
+        {% endfor %}
+      </div>
+    </div><br />
+    <!-- hashtags -->
+    <div class="card">
+      <div class="card-header text-white bg-info">
+        {% for list in lists %}
           {% if list[2] == 'hashtags' %}
-          <span style="color: honeydew;">(Id)</span>
-          <b><em>{{ list[2] | upper }}</em></b>&emsp;
-          <img src="{{ url_for('static', filename='img/hash.svg') }}">
+            <img src="{{ url_for('static', filename='img/hash.svg') }}">&ensp;
+            <b><em>{{ list[2] | upper }}</em></b>
           {% endif %}
-          {% endfor %}
-        </div>
-        <div class="card-body text-white bg-dark">
-          {% for item in items %}
+        {% endfor %}
+      </div>
+      <div class="card-body text-white bg-dark">
+        {% for item in items %}
           {% if item[2] == 2 %}
-          <span style="color:honeydew;">{{ "(%s)" % item[0] }}</span>
-          <b>{{ "%s, " % item[3] }}</b>
+            <b>{{ "[%d, %s], " % (item[0], item[3]) }}</b>
           {% endif %}
-          {% endfor %}
-        </div>
-      </div><br />
-      <!-- location -->
-      <div class="card">
-        <div class="card-header text-white bg-info">
-          {% for list in lists %}
+        {% endfor %}
+      </div>
+    </div><br />
+    <!-- location -->
+    <div class="card">
+      <div class="card-header text-white bg-info">
+        {% for list in lists %}
           {% if list[2] == 'locations' %}
-          <span style="color: honeydew;">(Id)</span>
-          <b><em>{{ list[2] | upper }}</em></b>&emsp;
-          <img src="{{ url_for('static', filename='img/map-pin.svg') }}">
+            <img src="{{ url_for('static', filename='img/map-pin.svg') }}">&ensp;
+            <b><em>{{ list[2] | upper }}</em></b>
           {% endif %}
-          {% endfor %}
-        </div>
-        <div class="card-body text-white bg-dark">
-          {% for item in items %}
+        {% endfor %}
+      </div>
+      <div class="card-body text-white bg-dark">
+        {% for item in items %}
           {% if item[2] == 3 %}
-          <span style="color: honeydew;">{{ "(%s)" % item[0] }}</span>
-          <b>{{ "%s, " % item[3] }}</b>
+            <b>{{ "[%d, %s], " % (item[0], item[3]) }}</b>
           {% endif %}
-          {% endfor %}
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>

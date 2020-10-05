@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 import os
 import time
+import os.path
 import app_db
 import app_conf
 import app_automate
-import os.path
 from os import path
 from flask import Flask, flash, render_template, redirect, request, url_for
 # Flask App & Secrent Key
@@ -20,7 +20,6 @@ def write_text(text_file, text_num):
         for item in items:
             if item[2] == text_num:
                 writer.write(''.join(f"{item[3]}\n"))
-    print(text_file)
 # Timestamp
 def current_time():
     print(f'\tDATE\t\tTIMESTAMP')
@@ -49,9 +48,16 @@ def index():
 # Write all data to text files
 @app.route('/upload/', methods=['GET', 'POST'])
 def upload():
-    write_text('static/txt/influencers.txt', 1)
-    write_text('static/txt/hashtags.txt', 2)
-    write_text('static/txt/locations.txt', 3)
+    category = ['influencers', 'hashtags', 'locations']
+    influencer_text = (f'static/txt/{category[0]}.txt', category[0])
+    hashtag_text = (f'static/txt/{category[1]}.txt', category[1])
+    location_text = (f'static/txt/{category[2]}.txt', category[2])
+    write_text(influencer_text, 1)
+    write_text(hashtag_text, 2)
+    write_text(location_text, 3)
+    num_influencers = os.system('wc -w static/txt/influencers.txt | awk \'{print $1}\'')
+    num_hashtags = os.system('wc -w static/txt/hashtags.txt | awk \'{print $1}\'')
+    num_locations = os.system('wc -w static/txt/locations.txt | awk \'{print $1}\'')
     return render_template('configure.html')
 # Configure Page (configure.html)
 @app.route('/configure/', methods=['GET', 'POST'])
@@ -87,5 +93,10 @@ def automation():
 def automate():
     if request.method == 'POST':
         app_automate.start_process()
-    return render_template('index.html')
 
+
+
+@app.route('/cancel/', methods=['GET', 'POST'])
+def cancel():
+    pass
+        
